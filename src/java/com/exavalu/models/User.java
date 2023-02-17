@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import org.apache.struts2.dispatcher.ApplicationMap;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ApplicationAware;
@@ -53,6 +54,9 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 
         } else {
             System.out.println("returning Failure from doLogin method");
+            Logger log = Logger.getLogger(User.class.getName());
+            log.error("returning Failure from Login method");
+            
         }
 
         return result;
@@ -64,6 +68,13 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
 //            getSessionMap().put("CountryList", countryList);
 //            return result;
 //    }
+    public String getAllEmployee() throws Exception {
+        String result = "SUCCESS";
+
+        return result;
+
+    }
+
     public String doPreSignUp() throws Exception {
         String result = "SUCCESS";
         ArrayList countryList = CountryService.getInstance().getAllCountry();
@@ -108,18 +119,6 @@ public class User extends ActionSupport implements ApplicationAware, SessionAwar
         String result = "SUCCESS";
         getSessionMap().clear();
         return result;
-    }
-
-    public String getAllEmployee() throws Exception {
-        String result = "SUCCESS";
-
-        return result;
-
-    }
-    public String getAddEmpPage() throws Exception {
-       
-        return "SUCCESS";
-        
     }
 
     public String doSignUp() {
